@@ -94,7 +94,7 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(102, 0, 51));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 51));
 
         jLabel1.setFont(new java.awt.Font("Californian FB", 0, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -127,7 +127,9 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
             }
         });
 
-        btnCadastrar.setBackground(new java.awt.Color(0, 255, 0));
+        btnCadastrar.setBackground(new java.awt.Color(0, 0, 255));
+        btnCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnCadastrar.setForeground(new java.awt.Color(255, 255, 255));
         btnCadastrar.setText("CADASTRAR");
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,6 +137,8 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
             }
         });
 
+        comboBoxEspecie.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        comboBoxEspecie.setForeground(new java.awt.Color(0, 0, 51));
         comboBoxEspecie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECIONE A ESPÉCIE", "GATO", "CACHORRO" }));
         comboBoxEspecie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,6 +146,8 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
             }
         });
 
+        comboBoxCor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        comboBoxCor.setForeground(new java.awt.Color(0, 0, 51));
         comboBoxCor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECIONE A COR", "BRANCO", "PRETO", "CARAMELO", " " }));
         comboBoxCor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,6 +155,8 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
             }
         });
 
+        btnListarAnimais.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnListarAnimais.setForeground(new java.awt.Color(0, 0, 51));
         btnListarAnimais.setText("LISTAR ANIMAIS");
         btnListarAnimais.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,24 +171,26 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnEncerrarSessao, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(165, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtIdadeAnimal, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtPesoAnimal, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtNomeAnimal, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(comboBoxCor, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnListarAnimais, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(comboBoxEspecie, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(163, 163, 163))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtNomeAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtPesoAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(btnListarAnimais, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(btnCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(txtIdadeAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(comboBoxCor, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(comboBoxEspecie, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -199,11 +209,11 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboBoxCor, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboBoxEspecie, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnListarAnimais, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -250,14 +260,14 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
 
         if (txtNomeAnimal.getText().equalsIgnoreCase("Digite o nome...")) {
-            JOptionPane.showMessageDialog(null, "Preencha o campo com pelo menos 3 caracteres");
+            JOptionPane.showMessageDialog(null, "Preencha o campo NOME com pelo menos 3 caracteres");
         } else if (txtIdadeAnimal.getText().equalsIgnoreCase("Digite a idade...")) {
-            JOptionPane.showMessageDialog(null, "Preencha a idade com um valor válido");
+            JOptionPane.showMessageDialog(null, "Preencha o campo IDADE com um valor válido");
         } else if (txtPesoAnimal.getText().equalsIgnoreCase("Digite a peso...")) {
-            JOptionPane.showMessageDialog(null, "Digite um peso válido");
+            JOptionPane.showMessageDialog(null, "Preencha o campo PESO com um valor válido");
         } else {
 
-            String nome = txtNomeAnimal.getText();
+            String nome = txtNomeAnimal.getText().toUpperCase();
             int idade = Integer.parseInt(txtIdadeAnimal.getText());
             double peso = Double.parseDouble(txtPesoAnimal.getText());
             int indexEspecie = comboBoxEspecie.getSelectedIndex(); //verifica o id do item na caixa de selecao
@@ -288,6 +298,7 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
                         if (Animal.buscarPorNome(gato.getNome()) == null) {
                             gato.cadastrarAnimal(); // cadastra o objeto instanciado na lista de animais
                             JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+                            ativarPlaceHolder();
                         } else {
                             JOptionPane.showMessageDialog(null, "ANIMAL JÁ EXISTE!");
                         }
@@ -305,6 +316,7 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
                         if (Animal.buscarPorNome(cachorro.getNome()) == null) {
                             cachorro.cadastrarAnimal(); // cadastra o objeto instanciado na lista de animais
                             JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+                            ativarPlaceHolder();
                         } else {
                             JOptionPane.showMessageDialog(null, "ANIMAL JÁ EXISTE!");
                         }
