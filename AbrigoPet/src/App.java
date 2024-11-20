@@ -20,6 +20,7 @@ public class App {
         
         tela.setVisible(true);
         
+       
     }
     
 }

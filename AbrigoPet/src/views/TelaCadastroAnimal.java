@@ -89,6 +89,7 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
         comboBoxEspecie = new javax.swing.JComboBox<>();
         comboBoxCor = new javax.swing.JComboBox<>();
         btnListarAnimais = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -164,6 +165,11 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Desenvolvido por @AbrigoPet");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -190,7 +196,8 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
                                 .addComponent(comboBoxCor, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(comboBoxEspecie, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -213,7 +220,9 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnListarAnimais, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addComponent(jLabel2)
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -258,79 +267,82 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
     }//GEN-LAST:event_comboBoxCorActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        try {
+            if (txtNomeAnimal.getText().equalsIgnoreCase("Digite o nome...")) {
+                JOptionPane.showMessageDialog(null, "Preencha o campo NOME com pelo menos 3 caracteres");
+            } else if (txtIdadeAnimal.getText().equalsIgnoreCase("Digite a idade...")) {
+                JOptionPane.showMessageDialog(null, "Preencha o campo IDADE com um valor válido");
+            } else if (txtPesoAnimal.getText().equalsIgnoreCase("Digite a peso...")) {
+                JOptionPane.showMessageDialog(null, "Preencha o campo PESO com um valor válido");
+            } else {
 
-        if (txtNomeAnimal.getText().equalsIgnoreCase("Digite o nome...")) {
-            JOptionPane.showMessageDialog(null, "Preencha o campo NOME com pelo menos 3 caracteres");
-        } else if (txtIdadeAnimal.getText().equalsIgnoreCase("Digite a idade...")) {
-            JOptionPane.showMessageDialog(null, "Preencha o campo IDADE com um valor válido");
-        } else if (txtPesoAnimal.getText().equalsIgnoreCase("Digite a peso...")) {
-            JOptionPane.showMessageDialog(null, "Preencha o campo PESO com um valor válido");
-        } else {
+                String nome = txtNomeAnimal.getText().toUpperCase();
+                int idade = Integer.parseInt(txtIdadeAnimal.getText());
+                double peso = Double.parseDouble(txtPesoAnimal.getText());
+                int indexEspecie = comboBoxEspecie.getSelectedIndex(); //verifica o id do item na caixa de selecao
+                int indexCor = comboBoxCor.getSelectedIndex(); //verifica o id do item na caixa de selecao
 
-            String nome = txtNomeAnimal.getText().toUpperCase();
-            int idade = Integer.parseInt(txtIdadeAnimal.getText());
-            double peso = Double.parseDouble(txtPesoAnimal.getText());
-            int indexEspecie = comboBoxEspecie.getSelectedIndex(); //verifica o id do item na caixa de selecao
-            int indexCor = comboBoxCor.getSelectedIndex(); //verifica o id do item na caixa de selecao
+                if (indexCor == 0) {
+                    JOptionPane.showMessageDialog(null, "Selecione uma cor válida");
+                } else if (indexEspecie == 0 && indexCor != 0) {
+                    JOptionPane.showMessageDialog(null, "Selecione uma espécie válida");
+                }
 
-            if (indexCor == 0) {
-                JOptionPane.showMessageDialog(null, "Selecione uma cor válida");
-            } else if (indexEspecie == 0 && indexCor != 0) {
-                JOptionPane.showMessageDialog(null, "Selecione uma espécie válida");
-            }
+                String cor = null;
 
-            String cor = null;
+                switch (indexCor) { // associa o id do item ao texto presente no campo
 
-            switch (indexCor) { // associa o id do item ao texto presente no campo
+                    case 1 ->
+                        cor = "BRANCO";
+                    case 2 ->
+                        cor = "PRETO";
+                    case 3 ->
+                        cor = "CARAMELO";
+                }
+                switch (indexEspecie) { // associa o id do item ao texto presente no campo
 
-                case 1 ->
-                    cor = "BRANCO";
-                case 2 ->
-                    cor = "PRETO";
-                case 3 ->
-                    cor = "CARAMELO";
-            }
-            switch (indexEspecie) { // associa o id do item ao texto presente no campo
+                    case 1 -> { // se o item selecionado for o 0 ele vai instanciar um objeto GATO
 
-                case 1 -> { // se o item selecionado for o 0 ele vai instanciar um objeto GATO
-                    var gato = new Gato(nome, idade, peso, cor);
-                    if (gato.setNome(nome) == 5 && gato.setIdade(idade) == 5 && gato.setPeso(peso) == 5) {
-                        if (Animal.buscarPorNome(gato.getNome()) == null) {
-                            gato.cadastrarAnimal(); // cadastra o objeto instanciado na lista de animais
-                            JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+                        var gato = new Gato(nome, idade, peso, cor);
+
+                        if (gato.setNome(nome) == 5 && gato.setIdade(idade) == 5 && gato.setPeso(peso) == 5) {
+
+                            gato.cadastrarAnimal(); // cadastra o objeto instanciado na lista de animais                           
                             ativarPlaceHolder();
-                        } else {
-                            JOptionPane.showMessageDialog(null, "ANIMAL JÁ EXISTE!");
+                            JOptionPane.showMessageDialog(rootPane,gato.emitirSom()+"! Gato cadastrado com sucesso!");
+
+                        } else if (gato.setNome(nome) == 1) {
+                            JOptionPane.showMessageDialog(null, "Tente um nome maior");
+                        } else if (gato.setPeso(peso) == 2 && gato.setNome(nome) != 1) {
+                            JOptionPane.showMessageDialog(null, "Tente uma peso maior");
+                        } else if (gato.setIdade(idade) == 3 && gato.setIdade(idade) != 2 && gato.setNome(nome) != 1) {
+                            JOptionPane.showMessageDialog(null, "Tente uma idade maior");
                         }
-                    } else if (gato.setNome(nome) == 1) {
-                        JOptionPane.showMessageDialog(null, "Tente um nome maior");
-                    } else if (gato.setPeso(peso) == 2 && gato.setNome(nome) != 1) {
-                        JOptionPane.showMessageDialog(null, "Tente uma peso maior");
-                    } else if (gato.setIdade(idade) == 3 && gato.setIdade(idade) != 2 && gato.setNome(nome) != 1) {
-                        JOptionPane.showMessageDialog(null, "Tente uma idade maior");
+
+                    }
+
+                    case 2 -> {
+                        var cachorro = new Cachorro(nome, idade, peso, cor); // se o item selecionado for o 0 ele vai instanciar um objeto GATO
+                        if (cachorro.setNome(nome) == 5 && cachorro.setIdade(idade) == 5 && cachorro.setPeso(peso) == 5) {
+
+                            cachorro.cadastrarAnimal(); // cadastra o objeto instanciado na lista de animais 
+                            JOptionPane.showMessageDialog(rootPane, cachorro.emitirSom()+"! Cachorro cadastrado com sucesso!");
+                            cachorro.emitirSom();
+                            ativarPlaceHolder();
+
+                        } else if (cachorro.setNome(nome) == 1) {
+                            JOptionPane.showMessageDialog(null, "Tente um nome maior");
+                        } else if (cachorro.setPeso(peso) == 2 && cachorro.setNome(nome) != 1) {
+                            JOptionPane.showMessageDialog(null, "Tente uma peso maior");
+                        } else if (cachorro.setIdade(idade) == 3 && cachorro.setIdade(idade) != 2 && cachorro.setNome(nome) != 1) {
+                            JOptionPane.showMessageDialog(null, "Tente uma idade maior");
+                        }
                     }
                 }
-                case 2 -> {
-                    var cachorro = new Cachorro(nome, idade, peso, cor); // se o item selecionado for o 0 ele vai instanciar um objeto GATO
-                    if (cachorro.setNome(nome) == 5 && cachorro.setIdade(idade) == 5 && cachorro.setPeso(peso) == 5) {
-                        if (Animal.buscarPorNome(cachorro.getNome()) == null) {
-                            cachorro.cadastrarAnimal(); // cadastra o objeto instanciado na lista de animais
-                            JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
-                            ativarPlaceHolder();
-                        } else {
-                            JOptionPane.showMessageDialog(null, "ANIMAL JÁ EXISTE!");
-                        }
-                    } else if (cachorro.setNome(nome) == 1) {
-                        JOptionPane.showMessageDialog(null, "Tente um nome maior");
-                    } else if (cachorro.setPeso(peso) == 2 && cachorro.setNome(nome) != 1) {
-                        JOptionPane.showMessageDialog(null, "Tente uma peso maior");
-                    } else if (cachorro.setIdade(idade) == 3 && cachorro.setIdade(idade) != 2 && cachorro.setNome(nome) != 1) {
-                        JOptionPane.showMessageDialog(null, "Tente uma idade maior");
-                    }
-                }
             }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(rootPane, "Erro: Apenas números são permitidos nos campos IDADE e PESO!", "Erro", JOptionPane.ERROR_MESSAGE);
         }
-
 
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
@@ -396,6 +408,7 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboBoxCor;
     private javax.swing.JComboBox<String> comboBoxEspecie;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtIdadeAnimal;
     private javax.swing.JTextField txtNomeAnimal;

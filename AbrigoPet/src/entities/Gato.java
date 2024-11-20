@@ -19,9 +19,9 @@ public class Gato extends Animal{
 //    }
 
     @Override
-    public void emitirSom() {
-//        super.emitirSom(); 
-        System.out.println("MIADO");
+    public String emitirSom() {
+        super.emitirSom(); 
+        return "MIAU MIAU";
     }
     
     
