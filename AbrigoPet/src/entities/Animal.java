@@ -48,14 +48,16 @@ public class Animal {
         }
     }
 
-    public void emitirSom() {
-        System.out.println("Fazendo barulho");
+    public String emitirSom() {
+        return "Fazendo barulho: ";
     }
 
     public void cadastrarAnimal(String nome, int idade, double peso, String cor, String especie) {
         Animal novoAnimal = new Animal(nome, idade, peso, cor, especie);
         listaDeAnimais.add(novoAnimal);
     }
+    
+  
 
     public void cadastrarAnimal() {
         listaDeAnimais.add(this);

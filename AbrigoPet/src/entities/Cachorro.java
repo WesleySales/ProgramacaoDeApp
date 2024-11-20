@@ -8,9 +8,9 @@ public class Cachorro extends Animal{
     }
 
     @Override
-    public void emitirSom() {
-//        super.emitirSom(); 
-        System.out.println("LATIDO");
+    public String emitirSom() {
+        super.emitirSom(); 
+        return "RUF RUF";
     }
     
           
